@@ -4,12 +4,17 @@
 
 package lazy
 
+import "sync"
+
 type OfString struct {
-	New   func() string
-	value string
+	New        func() string
+	lockString sync.Mutex
+	value      string
 }
 
 func (this *OfString) Value() string {
+	this.lockString.Lock()
+	defer this.lockString.Unlock()
 	if this.New != nil {
 		this.value = this.New()
 		this.New = nil
@@ -18,11 +23,14 @@ func (this *OfString) Value() string {
 }
 
 type OfInt struct {
-	New   func() int
-	value int
+	New     func() int
+	lockInt sync.Mutex
+	value   int
 }
 
 func (this *OfInt) Value() int {
+	this.lockInt.Lock()
+	defer this.lockInt.Unlock()
 	if this.New != nil {
 		this.value = this.New()
 		this.New = nil
@@ -31,11 +39,14 @@ func (this *OfInt) Value() int {
 }
 
 type OfBool struct {
-	New   func() bool
-	value bool
+	New      func() bool
+	lockBool sync.Mutex
+	value    bool
 }
 
 func (this *OfBool) Value() bool {
+	this.lockBool.Lock()
+	defer this.lockBool.Unlock()
 	if this.New != nil {
 		this.value = this.New()
 		this.New = nil
@@ -44,11 +55,14 @@ func (this *OfBool) Value() bool {
 }
 
 type OfAny struct {
-	New   func() Any
-	value Any
+	New     func() Any
+	lockAny sync.Mutex
+	value   Any
 }
 
 func (this *OfAny) Value() Any {
+	this.lockAny.Lock()
+	defer this.lockAny.Unlock()
 	if this.New != nil {
 		this.value = this.New()
 		this.New = nil
