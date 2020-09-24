@@ -6,23 +6,15 @@ import (
 
 type Item = generic.Type
 
-type LazyItem struct {
-	initializer func() Item
-	value       Item
+type OfItem struct {
+	New   func() Item
+	value Item
 }
 
-func (this *LazyItem) Value() Item {
-	if this.initializer != nil {
-		this.value = this.initializer()
-		this.initializer = nil
+func (this *OfItem) Value() Item {
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
 	}
 	return this.value
-}
-
-func (this *LazyItem) IsCreated() bool {
-	return this.initializer != nil
-}
-
-func OfItem(f func() Item) LazyItem {
-	return LazyItem{initializer: f}
 }

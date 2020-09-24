@@ -6,25 +6,33 @@ import (
 	"github.com/zetamatta/go-lazy"
 )
 
-var s1 = lazy.OfString(func() string {
-	println("s1 initialize")
-	return "Foo"
-})
+var s1 = lazy.OfString{
+	New: func() string {
+		println("s1 initialize")
+		return "Foo"
+	},
+}
 
-var i1 = lazy.OfInt(func() int {
-	println("i1 initialize")
-	return 1
-})
+var i1 = lazy.OfInt{
+	New: func() int {
+		println("i1 initialize")
+		return 1
+	},
+}
 
-var b1 = lazy.OfBool(func() bool {
-	println("b1 initialize")
-	return true
-})
+var b1 = lazy.OfBool{
+	New: func() bool {
+		println("b1 initialize")
+		return true
+	},
+}
 
-var a1 = lazy.OfAny(func() interface{} {
-	println("a1 initialize")
-	return "a"
-})
+var a1 = lazy.OfAny{
+	New: func() interface{} {
+		println("a1 initialize")
+		return "a"
+	},
+}
 
 func main() {
 	println("*** First ***")

@@ -4,86 +4,54 @@
 
 package lazy
 
-type LazyString struct {
-	initializer func() string
-	value       string
+type OfString struct {
+	New   func() string
+	value string
 }
 
-func (this *LazyString) Value() string {
-	if this.initializer != nil {
-		this.value = this.initializer()
-		this.initializer = nil
+func (this *OfString) Value() string {
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
 	}
 	return this.value
 }
 
-func (this *LazyString) IsCreated() bool {
-	return this.initializer != nil
+type OfInt struct {
+	New   func() int
+	value int
 }
 
-func OfString(f func() string) LazyString {
-	return LazyString{initializer: f}
-}
-
-type LazyInt struct {
-	initializer func() int
-	value       int
-}
-
-func (this *LazyInt) Value() int {
-	if this.initializer != nil {
-		this.value = this.initializer()
-		this.initializer = nil
+func (this *OfInt) Value() int {
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
 	}
 	return this.value
 }
 
-func (this *LazyInt) IsCreated() bool {
-	return this.initializer != nil
+type OfBool struct {
+	New   func() bool
+	value bool
 }
 
-func OfInt(f func() int) LazyInt {
-	return LazyInt{initializer: f}
-}
-
-type LazyBool struct {
-	initializer func() bool
-	value       bool
-}
-
-func (this *LazyBool) Value() bool {
-	if this.initializer != nil {
-		this.value = this.initializer()
-		this.initializer = nil
+func (this *OfBool) Value() bool {
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
 	}
 	return this.value
 }
 
-func (this *LazyBool) IsCreated() bool {
-	return this.initializer != nil
+type OfAny struct {
+	New   func() Any
+	value Any
 }
 
-func OfBool(f func() bool) LazyBool {
-	return LazyBool{initializer: f}
-}
-
-type LazyAny struct {
-	initializer func() Any
-	value       Any
-}
-
-func (this *LazyAny) Value() Any {
-	if this.initializer != nil {
-		this.value = this.initializer()
-		this.initializer = nil
+func (this *OfAny) Value() Any {
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
 	}
 	return this.value
-}
-
-func (this *LazyAny) IsCreated() bool {
-	return this.initializer != nil
-}
-
-func OfAny(f func() Any) LazyAny {
-	return LazyAny{initializer: f}
 }
