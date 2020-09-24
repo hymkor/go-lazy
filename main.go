@@ -21,7 +21,7 @@ func (this *LazyItem) Value() Item {
 	return this.value
 }
 
-func (this *LazyItem) HasValue() bool {
+func (this *LazyItem) IsCreated() bool {
 	return this.initializer != nil
 }
 

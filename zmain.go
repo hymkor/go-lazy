@@ -17,7 +17,7 @@ func (this *LazyString) Value() string {
 	return this.value
 }
 
-func (this *LazyString) HasValue() bool {
+func (this *LazyString) IsCreated() bool {
 	return this.initializer != nil
 }
 
@@ -38,7 +38,7 @@ func (this *LazyInt) Value() int {
 	return this.value
 }
 
-func (this *LazyInt) HasValue() bool {
+func (this *LazyInt) IsCreated() bool {
 	return this.initializer != nil
 }
 
@@ -59,7 +59,7 @@ func (this *LazyBool) Value() bool {
 	return this.value
 }
 
-func (this *LazyBool) HasValue() bool {
+func (this *LazyBool) IsCreated() bool {
 	return this.initializer != nil
 }
 
@@ -80,7 +80,7 @@ func (this *LazyAny) Value() Any {
 	return this.value
 }
 
-func (this *LazyAny) HasValue() bool {
+func (this *LazyAny) IsCreated() bool {
 	return this.initializer != nil
 }
 
