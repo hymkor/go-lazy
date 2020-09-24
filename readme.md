@@ -8,7 +8,7 @@ This package is made by [genny](https://github.com/cheekybits/genny/).
 example
 -------
 
-```
+```go
 package main
 
 import (
