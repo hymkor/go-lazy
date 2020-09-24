@@ -4,6 +4,8 @@ import (
 	"github.com/cheekybits/genny/generic"
 )
 
+//go:generate genny -in=$GOFILE -out=z$GOFILE gen "Item=string,int,bool,Any"
+
 type Item = generic.Type
 
 type LazyItem struct {
