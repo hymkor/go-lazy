@@ -22,15 +22,15 @@ func (this *OfString) Value() string {
 	return this.value
 }
 
-type OfInt struct {
-	New     func() int
-	lockInt sync.Mutex
-	value   int
+type OfBytes struct {
+	New       func() Bytes
+	lockBytes sync.Mutex
+	value     Bytes
 }
 
-func (this *OfInt) Value() int {
-	this.lockInt.Lock()
-	defer this.lockInt.Unlock()
+func (this *OfBytes) Value() Bytes {
+	this.lockBytes.Lock()
+	defer this.lockBytes.Unlock()
 	if this.New != nil {
 		this.value = this.New()
 		this.New = nil
@@ -47,6 +47,102 @@ type OfBool struct {
 func (this *OfBool) Value() bool {
 	this.lockBool.Lock()
 	defer this.lockBool.Unlock()
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
+	}
+	return this.value
+}
+
+type OfInt struct {
+	New     func() int
+	lockInt sync.Mutex
+	value   int
+}
+
+func (this *OfInt) Value() int {
+	this.lockInt.Lock()
+	defer this.lockInt.Unlock()
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
+	}
+	return this.value
+}
+
+type OfInt64 struct {
+	New       func() int64
+	lockInt64 sync.Mutex
+	value     int64
+}
+
+func (this *OfInt64) Value() int64 {
+	this.lockInt64.Lock()
+	defer this.lockInt64.Unlock()
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
+	}
+	return this.value
+}
+
+type OfUint struct {
+	New      func() uint
+	lockUint sync.Mutex
+	value    uint
+}
+
+func (this *OfUint) Value() uint {
+	this.lockUint.Lock()
+	defer this.lockUint.Unlock()
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
+	}
+	return this.value
+}
+
+type OfUint64 struct {
+	New        func() uint64
+	lockUint64 sync.Mutex
+	value      uint64
+}
+
+func (this *OfUint64) Value() uint64 {
+	this.lockUint64.Lock()
+	defer this.lockUint64.Unlock()
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
+	}
+	return this.value
+}
+
+type OfUintptr struct {
+	New         func() uintptr
+	lockUintptr sync.Mutex
+	value       uintptr
+}
+
+func (this *OfUintptr) Value() uintptr {
+	this.lockUintptr.Lock()
+	defer this.lockUintptr.Unlock()
+	if this.New != nil {
+		this.value = this.New()
+		this.New = nil
+	}
+	return this.value
+}
+
+type OfFloat64 struct {
+	New         func() float64
+	lockFloat64 sync.Mutex
+	value       float64
+}
+
+func (this *OfFloat64) Value() float64 {
+	this.lockFloat64.Lock()
+	defer this.lockFloat64.Unlock()
 	if this.New != nil {
 		this.value = this.New()
 		this.New = nil
