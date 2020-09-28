@@ -36,6 +36,13 @@ var b1 = lazy.OfBool{
     },
 }
 
+var B = lazy.OfBytes{
+    New: func() []byte {
+        println("[]byte initialize")
+        return []byte{'a', 'b', 'c', 'd'}
+    },
+}
+
 var a1 = lazy.OfAny{
     New: func() interface{} {
         println("a1 initialize")
@@ -48,11 +55,13 @@ func main() {
     println(s1.Value())
     println(i1.Value())
     println(b1.Value())
+    println(string(B.Value()))
     println(a1.Value())
     println("** Second ***")
     println(s1.Value())
     println(i1.Value())
     println(b1.Value())
+    println(string(B.Value()))
     println(a1.Value())
 }
 ```
@@ -66,11 +75,14 @@ i1 initialize
 1
 b1 initialize
 true
+[]byte initialize
+abcd
 a1 initialize
-(0xf99260,0xfbc1a0)
+(0x329260,0x34c260)
 ** Second ***
 Foo
 1
 true
-(0xf99260,0xfbc1a0)
+abcd
+(0x329260,0x34c260)
 ```
