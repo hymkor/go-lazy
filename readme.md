@@ -1,3 +1,5 @@
+[![Buil Status](https://travis-ci.com/zetamatta/go-lazy.svg?branch=master)](https://travis-ci.com/github/zetamatta/go-lazy)
+
 lazy
 ====
 
