@@ -2,19 +2,15 @@ package lazy
 
 import (
 	"sync"
-
-	"github.com/cheekybits/genny/generic"
 )
 
-type Item = generic.Type
-
-type OfItem struct {
-	New      func() Item
+type Of[T any]struct {
+	New      func() T
 	lockItem sync.Mutex
-	value    Item
+	value    T
 }
 
-func (this *OfItem) Value() Item {
+func (this *Of[T]) Value() T {
 	this.lockItem.Lock()
 	defer this.lockItem.Unlock()
 	if this.New != nil {

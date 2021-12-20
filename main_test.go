@@ -11,7 +11,9 @@ func TestLazyOfString(t *testing.T) {
 
 	called := 0
 
-	data := lazy.OfString{ New: func() string { called++; return sample } }
+	data := lazy.Of[string]{
+		New: func() string { called++; return sample },
+	}
 
 	if called != 0 {
 		t.Fatal("failed 1")
