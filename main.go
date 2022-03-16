@@ -4,7 +4,7 @@ import (
 	"sync"
 )
 
-type Of[T any]struct {
+type Of[T any] struct {
 	New      func() T
 	lockItem sync.Mutex
 	value    T

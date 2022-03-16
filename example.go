@@ -1,9 +1,10 @@
-//+build ignore
+//go:build ignore
+// +build ignore
 
 package main
 
 import (
-	"github.com/zetamatta/go-lazy"
+	"github.com/hymkor/go-lazy"
 )
 
 var s1 = lazy.Of[string]{

@@ -3,7 +3,7 @@ package lazy_test
 import (
 	"testing"
 
-	"github.com/zetamatta/go-lazy"
+	"github.com/hymkor/go-lazy"
 )
 
 func TestLazyOfString(t *testing.T) {
