@@ -34,4 +34,10 @@ func TestLazyOfString(t *testing.T) {
 	if called != 1 {
 		t.Fatal("failed 5")
 	}
+
+	data2 := lazy.New(func() string { return sample })
+	if data2.Value() != sample {
+		t.Fatal("failed 6")
+	}
+	// println( data2.Value())
 }

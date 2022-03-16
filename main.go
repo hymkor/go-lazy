@@ -19,3 +19,7 @@ func (this *Of[T]) Value() T {
 	}
 	return this.value
 }
+
+func New[T any](newfunc func() T) *Of[T] {
+	return &Of[T]{New: newfunc}
+}
