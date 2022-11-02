@@ -41,3 +41,18 @@ func TestLazyOfString(t *testing.T) {
 	}
 	// println( data2.Value())
 }
+
+func BenchmarkValue(b *testing.B) {
+	data := lazy.Of[string]{
+		New: func() string { return "lazy string" },
+	}
+
+	var res string
+	for i := 0; i < b.N; i++ {
+		res = data.Value()
+	}
+
+	if res != "lazy string" {
+		b.Fatal("bad string")
+	}
+}
