@@ -1,7 +1,8 @@
-[![Build Status](https://travis-ci.com/hymkor/go-lazy.svg?branch=master)](https://travis-ci.com/github/hymkor/go-lazy)
-
 lazy
 ====
+
+[![Build Status](https://travis-ci.com/hymkor/go-lazy.svg?branch=master)](https://travis-ci.com/github/hymkor/go-lazy)
+[![Go Reference](https://pkg.go.dev/badge/github.com/hymkor/go-lazy.svg)](https://pkg.go.dev/github.com/hymkor/go-lazy)
 
 Provides support for lazy initialization by generics in Go1.18
 
