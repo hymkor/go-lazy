@@ -13,6 +13,7 @@ var s1 = lazy.New(func() string {
 })
 
 func main() {
+	println("start")
 	println(s1.Value())
 	println(s1.Value())
 }

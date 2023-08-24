@@ -15,6 +15,7 @@ var s1 = lazy.Of[string]{
 }
 
 func main() {
+	println("start")
 	println(s1.Value())
 	println(s1.Value())
 }

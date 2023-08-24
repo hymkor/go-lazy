@@ -9,7 +9,7 @@ Provides support for lazy initialization by generics in Go1.18
 example 1
 ---------
 
-```go
+```example1.go
 package main
 
 import (
@@ -22,13 +22,14 @@ var s1 = lazy.New(func() string {
 })
 
 func main() {
+    println("start")
     println(s1.Value())
     println(s1.Value())
 }
 ```
 
-```shell
-$ go run example.go
+```go run example1.go|
+start
 s1 initialize
 Foo
 Foo
@@ -39,7 +40,7 @@ example 2
 
 Same as example 1. Light but long
 
-```go
+```example2.go
 package main
 
 import (
@@ -54,6 +55,7 @@ var s1 = lazy.Of[string]{
 }
 
 func main() {
+    println("start")
     println(s1.Value())
     println(s1.Value())
 }
