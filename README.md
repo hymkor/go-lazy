@@ -61,6 +61,32 @@ func main() {
 }
 ```
 
+example 2'
+---------
+
+A shorter variant of example 2 by binding the `Value` method as a function.
+
+```example2dash.go
+package main
+
+import (
+    "github.com/hymkor/go-lazy"
+)
+
+var s1 = (&lazy.Of[string]{
+    New: func() string {
+        println("s1 initialize")
+        return "Foo"
+    },
+}).Value
+
+func main() {
+    println("start")
+    println(s1())
+    println(s1())
+}
+```
+
 example 3
 ---------
 
