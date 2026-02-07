@@ -24,6 +24,24 @@ func New[T any](newfunc func() T) *Of[T] {
 	return &Of[T]{New: newfunc}
 }
 
+type Pair[T any, E any] struct {
+	New    func() (T, E)
+	once   sync.Once
+	value1 T
+	value2 E
+}
+
+func (this *Pair[T, E]) Values() (T, E) {
+	if this.New != nil {
+		this.once.Do(func() {
+			this.value1, this.value2 = this.New()
+			this.New = nil
+		})
+	}
+	return this.value1, this.value2
+}
+
+// Deprecated: use Pair instead.
 type Two[T any, E any] struct {
 	New    func() (T, E)
 	once   sync.Once
@@ -31,6 +49,7 @@ type Two[T any, E any] struct {
 	value2 E
 }
 
+// Deprecated: use (*Pair).Values instead.
 func (this *Two[T, E]) Values() (T, E) {
 	if this.New != nil {
 		this.once.Do(func() {
