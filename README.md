@@ -4,7 +4,8 @@ lazy
 [![Build Status](https://travis-ci.com/hymkor/go-lazy.svg?branch=master)](https://travis-ci.com/github/hymkor/go-lazy)
 [![Go Reference](https://pkg.go.dev/badge/github.com/hymkor/go-lazy.svg)](https://pkg.go.dev/github.com/hymkor/go-lazy)
 
-Provides support for lazy initialization by generics in Go1.18
+Provides support for lazy initialization by generics in Go1.18 and later.
+
 
 example 1
 ---------
@@ -38,7 +39,7 @@ Foo
 example 2
 ---------
 
-Same as example 1. Light but long
+Same as example 1, but more explicit.
 
 ```example2.go
 package main
@@ -64,7 +65,7 @@ func main() {
 example 2'
 ---------
 
-A shorter variant of example 2 by binding the `Value` method as a function.
+A shorter but more advanced variant of example 2 by binding the `Value` method as a function.
 
 ```example2dash.go
 package main
@@ -90,7 +91,7 @@ func main() {
 example 3
 ---------
 
-Two values version like `"sync".OnceValues`
+Two values version like [sync.OnceValues](https://pkg.go.dev/sync#OnceValues)
 
 ```example3.go
 package main
