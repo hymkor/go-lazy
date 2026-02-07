@@ -1,5 +1,4 @@
 //go:build ignore
-// +build ignore
 
 package main
 
@@ -9,7 +8,7 @@ import (
 
 var counter = 0
 
-var s1 = lazy.Two[string, int]{
+var s1 = lazy.Pair[string, int]{
 	New: func() (string, int) {
 		println("s1 initialize")
 		counter++
